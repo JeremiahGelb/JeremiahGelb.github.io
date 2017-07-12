@@ -1,0 +1,55 @@
+ <!DOCTYPE html>
+<html>
+<body>
+
+<h1>How Does it Know?</h1>
+<p>These 10 simple questions will allow my machine learning algorithm to guess your location. (Check = yes)</p>
+
+Do you have a dog? <input type="checkbox" id="myCheck0"> <br>
+
+Do you have a cat? <input type="checkbox" id="myCheck1"> <br>
+
+Do you like ice cream? <input type="checkbox" id="myCheck2"> <br>
+
+Is it raining outside? <input type="checkbox" id="myCheck3"> <br>
+
+Can you see trees if you look outside? <input type="checkbox" id="myCheck4"> <br>
+
+Does it ever snow where you are? <input type="checkbox" id="myCheck5"> <br>
+
+Is Uber more popular than Lyft where you are? <input type="checkbox" id="myCheck6"> <br>
+
+Have you heard of "The Beatles"? <input type="checkbox" id="myCheck7"> <br>
+
+Do people ever wear flip flops where you are? <input type="checkbox" id="myCheck8"> <br>
+
+Do you think this test will work? <input type="checkbox" id="myCheck9"> <br>
+
+<button type="button"
+onclick="httpGetAsync('http://ip-api.com/json', showLocation)">
+Submit Results!</button>
+
+<script>
+function httpGetAsync(theUrl, callback)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.responseText);
+    }
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+    xmlHttp.send(null);  
+}
+
+function showLocation(responseText)
+{
+	var location = JSON.parse(responseText);
+	var response = "You are in: " + location.city + ", " + location.region + "."
+	window.alert(response);
+}
+</script>
+
+</body>
+</html> 
+
+
