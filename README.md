@@ -1,3 +1,3 @@
 # JeremiahGelb.github.io
 
-(incomplete)
+(in progress)
